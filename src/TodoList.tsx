@@ -22,6 +22,7 @@ export default function TodoList() {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<IFormTodoValue>({
     // resolver: yupResolver(schema),
     defaultValues: {
@@ -31,7 +32,16 @@ export default function TodoList() {
   });
 
   const onValidation = async (data: IFormTodoValue) => {
-    console.log(data);
+    if (data.Password !== data.Password1) {
+      setError(
+        "Password1",
+        { message: "password are not the same" },
+        { shouldFocus: true }
+      );
+    }
+    setError("ExtraError", {
+      message: "Server offLine",
+    });
   };
 
   return (
@@ -58,6 +68,12 @@ export default function TodoList() {
           type="text"
           {...register("FirstName", {
             required: "First Name is required",
+            validate: {
+              chan: (value) =>
+                value?.includes("chan") ? "no chan allowed" : true,
+              noChan: (value) =>
+                value?.includes("chancc") ? "no chancc allowrd" : true,
+            },
           })}
           placeholder="성"
         />
@@ -92,7 +108,13 @@ export default function TodoList() {
         <Error>{errors.Password?.message}</Error>
         <input
           type="text"
-          {...(register("Password1"), { required: true })}
+          {...register("Password1", {
+            required: "please enter your password",
+            minLength: {
+              value: 8,
+              message: "Your password must be at least 8 characters long",
+            },
+          })}
           placeholder="비밀번호재입력"
         />
         <Error>{errors.Password1?.message}</Error>
