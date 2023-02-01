@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { IFormTodoValue } from "./type/todoType";
+import { IFormTodoValue } from "../type/todoType";
 import styled from "styled-components";
 
 export const Error = styled.span`

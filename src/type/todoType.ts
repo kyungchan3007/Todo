@@ -7,3 +7,13 @@ export interface IFormTodoValue {
   Email?: string;
   ExtraError?: string;
 }
+
+export interface ITodoValue {
+  toDo?: string;
+}
+
+export interface IToDo {
+  text?: string;
+  id: number;
+  category?: "TO_DO" | "DOING" | "DONE";
+}
