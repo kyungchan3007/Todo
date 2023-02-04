@@ -16,7 +16,7 @@ export default function CreateTodo() {
       { text: toDo, id: Date.now(), category: "TO_DO" },
       // 타입의 속성들을 나열
     ]); // Never[] typescript
-    setValue("toDo", "");
+    setValue("toDo", ""); //useForm 갹체의 기능 => 텍스트 입력 이벤트 이후 인풋창 상태를 빈값으로
   };
 
   return (

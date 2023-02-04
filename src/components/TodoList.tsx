@@ -24,6 +24,7 @@ export default function TodoList() {
   //   setValue("toDo", "");
   // };
   const toDos = useRecoilValue(toDoState);
+  console.log(toDos);
   return (
     <>
       <h1>Todo</h1>
