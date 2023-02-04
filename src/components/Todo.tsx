@@ -2,8 +2,6 @@ import { useSetRecoilState } from "recoil";
 import { IToDo } from "../type/todoType";
 import { toDoState } from "../unit/recoilState";
 
-const food = ["피자", "파스타", "낙지볶음밥", "된장찌개"];
-
 export default function Todo(props: IToDo) {
   //   const onClickTodo = (category: IToDo["category"]) => {
   //     console.log(category);
