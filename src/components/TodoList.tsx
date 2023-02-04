@@ -1,7 +1,5 @@
-import { useForm } from "react-hook-form";
-import { ITodoValue } from "../type/todoType";
 import styled from "styled-components";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { toDoState } from "../unit/recoilState";
 import CreateTodo from "./CreateTodo";
 import Todo from "./Todo";
