@@ -2,11 +2,11 @@ import { useSetRecoilState } from "recoil";
 import { IToDo } from "../type/todoType";
 import { toDoState } from "../unit/recoilState";
 
-const sss = ["apple", "orange", "berry", "kiwi"];
-const target = 1;
-const ddd = sss.slice(0, target);
-const ccc = sss.slice(target + 1);
-const hhh = [...ddd, "dfg", ...ccc];
+// const sss = ["apple", "orange", "berry", "kiwi"];
+// const target = 1;
+// const ddd = sss.slice(0, target);
+// const ccc = sss.slice(target + 1);
+// const hhh = [...ddd, "dfg", ...ccc];
 
 export default function Todo(props: IToDo) {
   //   const onClickTodo = (category: IToDo["category"]) => { category 의 타입을 타입스크립트를 사용해서 맞춰줄수도 있다.
