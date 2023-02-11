@@ -2,17 +2,27 @@ import { useSetRecoilState } from "recoil";
 import { IToDo } from "../type/todoType";
 import { toDoState } from "../unit/recoilState";
 
+const sss = ["apple", "orange", "berry", "kiwi"];
+const target = 1;
+const ddd = sss.slice(0, target);
+const ccc = sss.slice(target + 1);
+const hhh = [...ddd, "dfg", ...ccc];
+
 export default function Todo(props: IToDo) {
-  //   const onClickTodo = (category: IToDo["category"]) => {
-  //     console.log(category);
+  //   const onClickTodo = (category: IToDo["category"]) => { category 의 타입을 타입스크립트를 사용해서 맞춰줄수도 있다.
   //   };
+
   const setToDos = useSetRecoilState(toDoState);
+
   const onClickTodo = (e: React.MouseEvent<HTMLButtonElement>) => {
     const {
-      currentTarget: { name },
+      currentTarget: { name }, // 태그의 name을 가져온다
     } = e;
+
     setToDos((prev) => {
       const currentTargetPosition = prev.findIndex((e) => e.id === props.id);
+      console.log(props.id, "propsid");
+      //유저가 선택하는 todo의 id값과 props.id의 id값과 동일해야한다.
       //prev 의 인덱스 값과 props.id 의 인덱스값을 비교해서 수정해야할 인덱스값을 찾아온다
       //   const oldTodo = prev[currentTargetPosition];
       const newTodo = {

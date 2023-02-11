@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
-import { toDoState } from "../unit/recoilState";
+import { toDoSelecter, toDoState } from "../unit/recoilState";
 import CreateTodo from "./CreateTodo";
 import Todo from "./Todo";
 
@@ -23,15 +23,32 @@ export default function TodoList() {
   //   ]); // Never[] typescript
   //   setValue("toDo", "");
   // };
-  const toDos = useRecoilValue(toDoState);
-  console.log(toDos);
+  // const toDos = useRecoilValue(toDoState);
+  // 배열안에 배열을 선택하고 싶으면 배열을 열구 순서대로 이름을 지정하면된다
+  const [to, ing, done] = useRecoilValue(toDoSelecter);
+
   return (
     <>
-      <h1>Todo</h1>
+      <h1>TodoList</h1>
       <hr />
       <CreateTodo />
+      <h2> To Do </h2>
       <ul>
-        {toDos.map((el) => (
+        {to.map((el) => (
+          <Todo key={el.id} {...el} />
+        ))}
+      </ul>
+      <hr />
+      <h2> Doing </h2>
+      <ul>
+        {ing.map((el) => (
+          <Todo key={el.id} {...el} />
+        ))}
+      </ul>
+      <hr />
+      <h2>DONE</h2>
+      <ul>
+        {done.map((el) => (
           <Todo key={el.id} {...el} />
         ))}
       </ul>

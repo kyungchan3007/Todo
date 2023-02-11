@@ -11,6 +11,7 @@ export default function CreateTodo() {
 
   const onValidation = async ({ toDo }: ITodoValue) => {
     setTodos((oldTodos) => [
+      //리코일에서 받아오는 todo를 셋팅해준다
       // 이친구는 시작할때 빈배열이란것을 타입스크립트에 알려줘야한다.
       ...oldTodos, // 배열의 요소들을 전달
       { text: toDo, id: Date.now(), category: "TO_DO" },
