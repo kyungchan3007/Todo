@@ -1,14 +1,14 @@
 import { atom, selector } from "recoil";
-import { IToDo } from "../type/todoType";
+import { categories, IToDo } from "../type/todoType";
 
 export const toDoState = atom<IToDo[]>({
   key: "toDo",
   default: [],
 });
 
-export const categoryState = atom({
+export const categoryState = atom<categories>({
   key: "category",
-  default: "TO_DO",
+  default: categories.TO_DO,
 });
 
 //state를 입력 받아서 그걸 변형해 반환하는 순수함수를 거쳐 반환된 값을 말한다.
@@ -17,11 +17,27 @@ export const categoryState = atom({
 // 배열의 첫번째 원소는 TO_DO 배열
 // 배열의 두번쨰 원소는 DOING 배열
 // 배열의 세번째 원소는 DONE 배열
+
 export const toDoSelecter = selector({
   key: "todoSelecter",
   get: ({ get }) => {
     const toDos = get(toDoState);
     const category = get(categoryState);
     return toDos.filter((el) => el.category === category);
+  },
+});
+
+//전체 보이게 하는 배열
+export const toDoSelecterView = selector({
+  key: "todoSelecterView",
+  get: ({ get }) => {
+    const toDos = get(toDoState);
+    // const category = get(categoryState);
+    return [
+      toDos.filter((el) => el.category === categories.TO_DO),
+      toDos.filter((el) => el.category === categories.DOING),
+      toDos.filter((el) => el.category === categories.DONE),
+      toDos.filter((el) => el.category === categories.ALL),
+    ];
   },
 });

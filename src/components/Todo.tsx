@@ -1,5 +1,5 @@
 import { useSetRecoilState } from "recoil";
-import { IToDo } from "../type/todoType";
+import { categories, IToDo } from "../type/todoType";
 import { toDoState } from "../unit/recoilState";
 
 // const sss = ["apple", "orange", "berry", "kiwi"];
@@ -21,7 +21,7 @@ export default function Todo(props: IToDo) {
 
     setToDos((prev) => {
       const currentTargetPosition = prev.findIndex((e) => e.id === props.id);
-      console.log(props.id, "propsid");
+
       //유저가 선택하는 todo의 id값과 props.id의 id값과 동일해야한다.
       //prev 의 인덱스 값과 props.id 의 인덱스값을 비교해서 수정해야할 인덱스값을 찾아온다
       //   const oldTodo = prev[currentTargetPosition];
@@ -44,7 +44,7 @@ export default function Todo(props: IToDo) {
       <div>
         <li key={props.id}>
           {props.text}
-          {props.category !== "TO_DO" && (
+          {props.category !== categories.TO_DO && (
             // <button
             //   onClick={() => {
             //     onClickTodo("TO_DO"); // onClick함수에 인자값을 넣어야할때
@@ -52,17 +52,17 @@ export default function Todo(props: IToDo) {
             // >
             //   Todo
             // </button>
-            <button name="TO_DO" onClick={onClickTodo}>
+            <button name={categories.TO_DO} onClick={onClickTodo}>
               Todo
             </button>
           )}
-          {props.category !== "DOING" && (
-            <button name="DOING" onClick={onClickTodo}>
-              DOING
+          {props.category !== categories.DOING && (
+            <button name={categories.DOING} onClick={onClickTodo}>
+              Doing
             </button>
           )}
-          {props.category !== "DONE" && (
-            <button name="DONE" onClick={onClickTodo}>
+          {props.category !== categories.DONE && (
+            <button name={categories.DONE} onClick={onClickTodo}>
               {" "}
               Done
             </button>
