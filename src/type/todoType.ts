@@ -26,3 +26,7 @@ export enum categories {
   "DONE" = "DONE",
   "ALL" = "ALL",
 }
+
+export interface ISelector {
+  selectChange: (e: React.FormEvent<HTMLSelectElement>) => void;
+}

@@ -17,12 +17,13 @@ export const categoryState = atom<categories>({
 // 배열의 첫번째 원소는 TO_DO 배열
 // 배열의 두번쨰 원소는 DOING 배열
 // 배열의 세번째 원소는 DONE 배열
-
+// get function 은 selector 가 어떤 것을 반환할지를 결정한다.
+// get 은 객체를 받아 오는데 getfunction 은 atom 을 가져올수있다.
 export const toDoSelecter = selector({
   key: "todoSelecter",
   get: ({ get }) => {
-    const toDos = get(toDoState);
-    const category = get(categoryState);
+    const toDos = get(toDoState); // todo들을 가져다가 categoryState에 맞는 toDo만을 걸러서 반환해준다.
+    const category = get(categoryState); //값이 변경될때 마다 selecotr도 실행된다.
     return toDos.filter((el) => el.category === category);
   },
 });

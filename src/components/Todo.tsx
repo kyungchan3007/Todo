@@ -9,6 +9,7 @@ import { toDoState } from "../unit/recoilState";
 // const hhh = [...ddd, "dfg", ...ccc];
 
 export default function Todo(props: IToDo) {
+  //todo의 상태변경해주는 components
   //   const onClickTodo = (category: IToDo["category"]) => { category 의 타입을 타입스크립트를 사용해서 맞춰줄수도 있다.
   //   };
 

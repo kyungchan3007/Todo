@@ -5,6 +5,7 @@ import { categoryState, toDoState } from "../unit/recoilState";
 
 export default function CreateTodo() {
   const setTodos = useSetRecoilState(toDoState);
+  const getTodos = useRecoilValue(toDoState);
   const category = useRecoilValue(categoryState);
   const { register, handleSubmit, setValue } = useForm<ITodoValue>({
     mode: "onChange",
@@ -20,6 +21,7 @@ export default function CreateTodo() {
     ]); // Never[] typescript
     setValue("toDo", "");
     //useForm 갹체의 기능 => 텍스트 입력 이벤트 이후 인풋창 상태를 빈값으로
+    console.log(getTodos);
   };
 
   return (
